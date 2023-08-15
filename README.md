@@ -1,57 +1,6 @@
-# base
+# درباره
+رابط کاربری تحت وب نرم افزار خیریه امام علی ابن ابیطالب (ع) شهر گرگاب ، قدرت گرفته از vuejs 
+# َAbout
 
-## Project setup
+The web user interface of Emam Ali Ibne Abi Talib charity software of the city of Gargab, powered by vuejs
 
-```
-# yarn
-yarn
-
-# npm
-npm install
-
-# pnpm
-pnpm install
-```
-
-### Compiles and hot-reloads for development
-
-```
-# yarn
-yarn dev
-
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-```
-
-### Compiles and minifies for production
-
-```
-# yarn
-yarn build
-
-# npm
-npm run build
-
-# pnpm
-pnpm build
-```
-
-### Lints and fixes files
-
-```
-# yarn
-yarn lint
-
-# npm
-npm run lint
-
-# pnpm
-pnpm lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://vitejs.dev/config/).
