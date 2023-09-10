@@ -8,7 +8,12 @@ const routes = [
     name: 'Home',
   },
   {
-    path:'/pay/:type',
+    path:'/auth',
+    name:'auth',
+    component: () => import('@/views/Auth.vue'),
+  },
+  {
+    path:'/pay/:type(.*)*',
     name:'pay',
     component: () => import('@/views/Pay.vue'),
   },

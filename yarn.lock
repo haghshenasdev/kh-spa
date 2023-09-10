@@ -863,6 +863,11 @@ nth-check@^2.1.1:
   dependencies:
     boolbase "^1.0.0"
 
+num2persian@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.npmjs.org/num2persian/-/num2persian-3.2.2.tgz"
+  integrity sha512-xwT+fAiVWq6Nde+JWf5/PlW3qAGRNa0TJEUJwoJmaXjmLp1dewOFiX2+jUSreAsTrX2qi/rzgk3diSt36f6ouQ==
+
 once@^1.3.0:
   version "1.4.0"
   resolved "https://registry.npmjs.org/once/-/once-1.4.0.tgz"

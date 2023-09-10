@@ -1,24 +1,42 @@
-import axios from "axios"
+import axios from "@/plugins/axios";
 
-  axios.defaults.baseURL = 'http://127.0.0.1:8000/api/v1/1';
-  axios.defaults.headers = {
-    'Access-Control-Allow-Origin': '*'
+  // function getHomeData() {
+  //   var result = {
+  //     data : null,
+  //     error: null,
+  //   };
+  //   await axios.get('/')
+  //     .then(function (response) {
+  //       // handle success
+  //       return result.data = response.data;
+  //     })
+  //     .catch(function (error) {
+  //       // handle error
+  //       return result.error = error;
+  //     });
+  // }
+
+  function getFormDataBody(data){
+    var bodyFormData = new FormData();
+    Object.keys(data).forEach(key => {
+      bodyFormData.append(key, data[key]);
+    });
+    return bodyFormData;
   }
-  function getHomeData() {
-    axios.get('/')
-      .then(function (response) {
-        // handle success
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-      .finally(function () {
-        // always executed
-      });
+
+  function authHeader() {
+    let user = JSON.parse(localStorage.getItem('user'));
+
+    if (user && user.token) {
+      return {
+        'Authorization': `Bearer ${user.token}`
+      };
+    } else {
+      return {};
+    }
   }
 
 export {
-  getHomeData
+  getFormDataBody,
+  authHeader
 }
