@@ -11,7 +11,7 @@ import router from '../router'
 import axios from './axios'
 
 export function registerPlugins (app) {
-  loadFonts()
+  // loadFonts()
   app
     .use(vuetify)
     .use(router)

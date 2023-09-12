@@ -49,6 +49,7 @@
 
 <script>
 import AuthService from '@/classes/AuthServices'
+
 export default {
   data(){
     return {
@@ -67,16 +68,19 @@ export default {
     }
   },
   mounted(){
-    console.log(AuthService.checkAuth());
   },
   methods:{
+
     login(){
-      var result = AuthService.login(this.loginFormData);
-      console.log(result.data)
-      // if(result.status == 'error') this.loginErrors = result.errors;
-      // else{
-      //   this.$router.push({ name: 'Home'})
+      var res = AuthService.login(this.loginFormData);
+
+      let backPath = '/'
+      //bug >>>>>>>>>>>>>>>
+      // if (this.$route.params['back'][0] != ''){
+      //   backPath = this.$route.params['back'][0];
       // }
+      // console.log(backPath)
+      this.$router.push(backPath)
     },
     register(){
 

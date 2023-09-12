@@ -55,7 +55,7 @@ export default {
         return 'معادل ' + Num2persian(this.formData.amount / 10) + ' تومان '
     }
   },
-  beforeCreate() {
+  mounted() {
 
     const $this = this;
     this.$axios.get('/type')
@@ -69,7 +69,8 @@ export default {
         console.log(error);
       });
 
-    if (this.$route.params.type != "") {
+      console.log(this.$route.params.type)
+    if (this.$route.params.type != "" && this.$route.params.type !== undefined) {
       this.$axios.get('/type', {
         params: {
           id: $this.$route.params.type
@@ -93,7 +94,7 @@ export default {
       const $this = this;
 console.log(this.formData)
       var bodyFormData = new FormData();
-      bodyFormData.append('amount',$this.formData.amount);
+      bodyFormData.append('amount',$this.formData.amount/10);
       bodyFormData.append('type',$this.formData.type);
 
     this.$axios.post('/pay',bodyFormData)

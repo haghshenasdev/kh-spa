@@ -20,7 +20,7 @@
             <strong>اخبار</strong>
           </v-col>
 
-          <v-col v-for="item in posts" cols="4" md="3">
+          <v-col v-for="item in posts" cols="8" lg="4">
 
             <v-card>
               <v-img :src="item.img" height="200px" cover></v-img>
@@ -40,7 +40,7 @@
             <strong>پروژه ها</strong>
           </v-col>
 
-          <v-col v-for="item in homeData.projects" cols="4" md="3">
+          <v-col v-for="item in homeData.projects" cols="8" lg="4">
 
             <v-card>
               <v-img :src="item.image_head" height="200px" cover></v-img>

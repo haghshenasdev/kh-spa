@@ -36,7 +36,20 @@ import axios from "@/plugins/axios";
     }
   }
 
+  function checkAuth(){
+    let user = JSON.parse(localStorage.getItem('user'));
+    if (user && user.token) return user;
+    return false;
+  }
+
+
+  function logout() {
+    localStorage.removeItem('user');
+  }
+
 export {
   getFormDataBody,
-  authHeader
+  checkAuth,
+  authHeader,
+  logout
 }
