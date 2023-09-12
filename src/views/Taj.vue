@@ -156,11 +156,10 @@ export default {
   },
   methods: {
     getMarasemData() {
-      var $this = this;
       this.$axios.get('/marasem')
-        .then(function (response) {
+        .then( (response) => {
           // handle success
-          $this.marasemData = response.data.data;
+          this.marasemData = response.data.data;
         })
         .catch(function (error) {
           // handle error

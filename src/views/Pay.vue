@@ -56,12 +56,10 @@ export default {
     }
   },
   mounted() {
-
-    const $this = this;
     this.$axios.get('/type')
-      .then(function (response) {
+      .then( (response) => {
         // handle success
-        $this.types = response.data.data;
+        this.types = response.data.data;
         // console.log(response.data.data)
       })
       .catch(function (error) {
@@ -73,13 +71,13 @@ export default {
     if (this.$route.params.type != "" && this.$route.params.type !== undefined) {
       this.$axios.get('/type', {
         params: {
-          id: $this.$route.params.type
+          id: this.$route.params.type
         },
       })
-        .then(function (response) {
+        .then( (response) => {
           // handle success
-          $this.typeData = response.data.data;
-          $this.formData.type = $this.typeData.id;
+          this.typeData = response.data.data;
+          this.formData.type = this.typeData.id;
           // console.log(response.data.data)
         })
         .catch(function (error) {
@@ -91,24 +89,23 @@ export default {
   methods:{
     sendToPay(){
 
-      const $this = this;
 console.log(this.formData)
       var bodyFormData = new FormData();
-      bodyFormData.append('amount',$this.formData.amount/10);
-      bodyFormData.append('type',$this.formData.type);
+      bodyFormData.append('amount',this.formData.amount/10);
+      bodyFormData.append('type',this.formData.type);
 
     this.$axios.post('/pay',bodyFormData)
-      .then(function (response) {
+      .then( (response) => {
         // handle success
-        // $this.types = response.data.data;
+        // this.types = response.data.data;
         console.log(response.data)
         window.open(response.data.url)
       })
-      .catch(function (error) {
+      .catch( (error) => {
         // handle error
         console.log('error');
         console.log(error.response.data);
-        $this.errorMessage = error.response.data.message;
+        this.errorMessage = error.response.data.message;
       });
     }
   }

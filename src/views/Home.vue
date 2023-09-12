@@ -77,12 +77,11 @@ export default {
     }
   },
   mounted() {
-    const $this = this;
-    this.$axios.get('/')
-      .then(function (response) {
+    this.$axios.get('')
+      .then( (response) => {
         // handle success
-        $this.homeData = response.data.data
-        console.log(response.data.data)
+        this.homeData = response.data.data
+        // console.log(response.data.data)
       })
       .catch(function (error) {
         // handle error
@@ -90,10 +89,10 @@ export default {
       });
 
     this.$axios.get('/blog/post')
-      .then(function (response) {
+      .then( (response) => {
         // handle success
-        $this.posts = response.data.data
-        console.log($this.posts)
+        this.posts = response.data.data
+        // console.log(this.posts)
       })
       .catch(function (error) {
         // handle error

@@ -17,11 +17,11 @@
 
         <v-divider></v-divider>
         <v-list density="compact" nav>
-          <v-list-item @click="this.$router.push({name : 'Home'})" prepend-icon="mdi-home" title="صفحه اصلی" value="home"></v-list-item>
-          <v-list-item @click="this.$router.push({name : 'pay'})" prepend-icon="mdi-charity" title="پرداخت کمک نقدی" value="pay"></v-list-item>
+          <v-list-item @click="$router.push({name : 'Home'})" prepend-icon="mdi-home" title="صفحه اصلی" value="home"></v-list-item>
+          <v-list-item @click="$router.push({name : 'pay'})" prepend-icon="mdi-charity" title="پرداخت کمک نقدی" value="pay"></v-list-item>
 
           <v-item-group v-if="!checkAuthRes">
-            <v-list-item @click="this.$router.push('auth')" prepend-icon="mdi-view-dashboard" title="ورود یا ثبت نام" value="login"></v-list-item>
+            <v-list-item @click="$router.push('auth')" prepend-icon="mdi-view-dashboard" title="ورود یا ثبت نام" value="login"></v-list-item>
           </v-item-group>
           <v-item-group v-if="checkAuthRes">
             <v-list-item prepend-icon="mdi-view-dashboard" title="خروج از حساب کاربری">
@@ -71,12 +71,11 @@ import {checkAuth,logout} from '@/composable/useApi'
     },
     mounted() {
       this.checkAuthRes = checkAuth()
-      var $this = this;
       this.$axios.get('/about')
-        .then(function (response) {
+        .then((response) => {
           // handle success
-          $this.charityAbout = response.data[0];
-          document.title = 'نرم افزار ' + $this.getCharityAbout('shortname')
+          this.charityAbout = response.data[0];
+          document.title = 'نرم افزار ' + this.getCharityAbout('shortname')
           // console.log(response.data)
         })
     },
