@@ -20,6 +20,26 @@ class AuthServices {
         });
   }
 
+  async register(user){
+
+    return axios
+        .post('register', getFormDataBody({
+          phone: user.phone,
+          email: user.email,
+          name: user.name,
+          password: user.password,
+          password_confirmation: user.password_confirmation,
+          device_name: 'web',
+        }))
+        .then(response => {
+          // console.log(response.data.status)
+          if (response.data.status == 'success' && response.data.data.token) {
+            localStorage.setItem('user', JSON.stringify(response.data.data));
+          }
+          return response.data;
+        });
+  }
+
   logout() {
     localStorage.removeItem('user');
   }

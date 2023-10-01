@@ -2,7 +2,10 @@
   <v-app id="inspire">
 
     <v-main class="bg-blue-grey-lighten-5">
-      <v-container>
+      <v-container v-if="loading">
+        <LoadingComponent />
+      </v-container>
+      <v-container v-else>
         <v-row justify="center">
           <v-col cols="12" sm="8">
             <v-card>
@@ -36,10 +39,13 @@
 
 <script>
 import Num2persian from 'num2persian';
+import LoadingComponent from '@/components/LoadingComponent.vue'
+
 
 export default {
   data() {
     return {
+      loading:true,
       types: [],
       formData: {
         amount: null,
@@ -49,6 +55,9 @@ export default {
       errorMessage: null,
     }
   },
+  components:{
+    LoadingComponent,
+  },
   computed: {
     nToP() {
       if (this.formData.amount != null)
@@ -56,19 +65,7 @@ export default {
     }
   },
   mounted() {
-    this.$axios.get('/type')
-      .then( (response) => {
-        // handle success
-        this.types = response.data.data;
-        // console.log(response.data.data)
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      });
-
-      console.log(this.$route.params.type)
-    if (this.$route.params.type != "" && this.$route.params.type !== undefined) {
+    if (this.$route.params.type !== undefined && this.$route.params.type != "") {
       this.$axios.get('/type', {
         params: {
           id: this.$route.params.type
@@ -78,12 +75,25 @@ export default {
           // handle success
           this.typeData = response.data.data;
           this.formData.type = this.typeData.id;
+          this.loading = false;
           // console.log(response.data.data)
         })
         .catch(function (error) {
           // handle error
           console.log(error);
         });
+    }else{
+      this.$axios.get('/type')
+      .then( (response) => {
+        // handle success
+        this.types = response.data.data;
+        this.loading = false;
+        // console.log(response.data.data)
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      });
     }
   },
   methods:{
