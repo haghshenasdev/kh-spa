@@ -27,10 +27,10 @@
                   </v-card-text>
                 </v-window-item>
 
-                <v-window-item :value="2">
+                <!-- <v-window-item :value="2">
                   <v-card-text>
                     <div v-if="marasemData == null" class="text-center">
-                      <v-progress-circular  color="primary" indeterminate></v-progress-circular>
+                      <v-progress-circular color="primary" indeterminate></v-progress-circular>
                     </div>
                     <v-item-group selected-class="bg-primary">
                       <v-item v-if="marasemData != null" v-for="item in marasemData"
@@ -109,13 +109,23 @@
                     </h3>
                     <span class="text-caption text-grey">Thanks for signing up!</span>
                   </div>
+                </v-window-item> -->
+
+                <v-window-item :value="2">
+                  <div class="pa-4 text-center">
+                    <v-img class="mb-4" contain height="128" src="https://kheiriehemamali.ir/css/images/logo-blue.svg"></v-img>
+                    <h3 class="mb-2">
+                      این قابلیت به زودی در دسترس قرار خواهد گرفت
+                    </h3>
+                    <span class="text-grey">ما مشغول توسعه زیر ساخت های این قابلیت هستیم . از همراهی شما سپاس گزاریم.</span>
+                  </div>
                 </v-window-item>
               </v-window>
 
               <v-divider></v-divider>
 
               <v-card-actions>
-                <v-btn v-if="step < 4" color="primary" variant="flat" @click="step++">
+                <v-btn v-if="step < 2" color="primary" variant="flat" @click="step++">
                   ادامه
                 </v-btn>
                 <v-spacer></v-spacer>
@@ -157,7 +167,7 @@ export default {
   methods: {
     getMarasemData() {
       this.$axios.get('/marasem')
-        .then( (response) => {
+        .then((response) => {
           // handle success
           this.marasemData = response.data.data;
         })
@@ -179,11 +189,15 @@ export default {
   },
   computed: {
     currentTitle() {
+      // switch (this.step) {
+      //   case 1: return 'سفارش تاج گل'
+      //   case 2: return 'مراسمات پیش رو'
+      //   case 3: return 'از طرف'
+      //   default: return 'تایید سفارش'
+      // }
       switch (this.step) {
         case 1: return 'سفارش تاج گل'
-        case 2: return 'مراسمات پیش رو'
-        case 3: return 'از طرف'
-        default: return 'تایید سفارش'
+        default: return 'درآینده'
       }
     },
 

@@ -27,6 +27,12 @@ const routes = [
     beforeEnter: [authMiddleware],
   },
   {
+    path:'/payhistory',
+    name:'payhistory',
+    component: () => import('@/views/PayHistory.vue'),
+    beforeEnter: [authMiddleware],
+  },
+  {
     path:'/taj',
     name:'taj',
     component: () => import('@/views/Taj.vue'),

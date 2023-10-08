@@ -8,10 +8,10 @@
       <v-container v-else>
 
         <v-row align="center" justify="center">
-          <v-col cols="4" lg="2" v-for="item in homeData.homeItems">
+          <v-col cols="3" lg="2" v-for="item in homeData.homeItems">
             <v-btn height="100" width="100%" @click="handelHomeItemClick(item.action)" color="blue" stacked>
-              <v-img width="40" cover :src="item.icon" class="mb-1"></v-img>
-              <p>{{ item.title }}</p>
+              <v-img width="40" cover :src="item.icon" class="mb-2"></v-img>
+              <p style="font-size:13px;">{{ item.title }}</p>
             </v-btn>
           </v-col>
 
@@ -19,12 +19,12 @@
 
         <HadisComponent v-if="homeData.hadis != null && homeData.hadis != undefined" :hadisData="homeData.hadis" />
 
-        <SliderComponent v-if="homeData.slider != null && homeData.slider != undefined" :sliderData="homeData.slider" />
+        <SliderComponent v-if="homeData.slider != null && homeData.slider != undefined && homeData.slider.length > 0" :sliderData="homeData.slider" />
 
 
         <PostComponent />
 
-        <ProjectComponent v-if="homeData.projects != undefined && homeData.projects != null" :pData="homeData.projects" />
+        <ProjectComponent v-if="homeData.projects != undefined && homeData.projects != null && homeData.projects.length > 0" :pData="homeData.projects" />
 
       </v-container>
     </v-main>
