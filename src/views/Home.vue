@@ -10,7 +10,7 @@
         <v-row align="center" justify="center">
           <v-col cols="3" lg="2" v-for="item in homeData.homeItems">
             <v-btn height="100" width="100%" @click="handelHomeItemClick(item.action)" color="blue" stacked>
-              <v-img width="40" cover :src="item.icon" class="mb-2"></v-img>
+              <v-img width="35" cover :src="item.icon" class="mb-2"></v-img>
               <p style="font-size:13px;">{{ item.title }}</p>
             </v-btn>
           </v-col>
@@ -65,7 +65,7 @@ export default {
   },
   methods: {
     handelHomeItemClick(action) {
-      console.log(action)
+      // console.log(action)
       switch (action.fnName) {
         case 'openPayment':
           this.$router.push({ name: 'pay', params: action.params })

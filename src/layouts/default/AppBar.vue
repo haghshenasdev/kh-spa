@@ -24,7 +24,7 @@
             <v-list-item @click="$router.push('auth')" prepend-icon="mdi-view-dashboard" title="ورود یا ثبت نام" value="login"></v-list-item>
           </v-item-group>
           <v-item-group v-if="checkAuthRes">
-            <v-list-item @click="$router.push('payhistory')" prepend-icon="mdi-view-dashboard" title="سابقه کمک نقدی" value="pay_history"></v-list-item>
+            <v-list-item @click="$router.push('payhistory')" prepend-icon="mdi-history" title="سوابق کمک نقدی" value="pay_history"></v-list-item>
             <v-list-item prepend-icon="mdi-view-dashboard" title="خروج از حساب کاربری">
               <v-dialog
         v-model="logoutDialog"

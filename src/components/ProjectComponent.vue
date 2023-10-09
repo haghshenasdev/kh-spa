@@ -34,6 +34,11 @@
 
 <script>
 export default {
+  data(){
+    return {
+      model : null
+    }
+  },
   props: [
     'pData',
   ]

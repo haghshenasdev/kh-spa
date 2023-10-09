@@ -7,10 +7,10 @@ chidElement.remove()
   // axios.defaults.baseURL = 'http://127.0.0.1:8000/api/v1/1';
   axios.defaults.headers = {
     'Access-Control-Allow-Origin': '*',
-    'Accept' : 'application/json'
+    'Accept' : 'application/json',
   }
   axios.defaults.headers.common = authHeader();
-  console.log(axios.defaults.headers)
+  // console.log(axios.defaults.headers)
 
   export default axios
 
