@@ -2,7 +2,10 @@
   <v-app id="inspire">
 
     <v-main class="bg-blue-grey-lighten-5">
-      <v-container>
+      <v-container v-if="projectData == null">
+        <LoadingComponent />
+      </v-container>
+      <v-container v-else>
         <v-row justify="space-around">
           <v-col>
             <v-card v-if="projectData != null">
@@ -30,7 +33,12 @@
   </v-app>
 </template>
 <script>
+import LoadingComponent from '@/components/LoadingComponent.vue'
+
 export default {
+  components: {
+    LoadingComponent
+  },
   data() {
     return {
       projectData: null
